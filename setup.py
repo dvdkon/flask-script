@@ -14,7 +14,7 @@ Links
 import sys
 from setuptools import setup
 
-version='2.0.6'
+version='2.0.7'
 
 # Hack to prevent stupid TypeError: 'NoneType' object is not callable error on
 # exit of python setup.py test # in multiprocessing/util.py _exit_function when
