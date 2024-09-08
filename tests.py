@@ -177,9 +177,10 @@ class AppForTesting(object):
 
 class TestManager:
 
-    def setup(self):
+    @classmethod
+    def setup_class(cls):
 
-        self.app = AppForTesting()
+        cls.app = AppForTesting()
 
     def test_with_default_commands(self):
 
@@ -739,9 +740,10 @@ class TestManager:
 
 class TestSubManager:
 
-    def setup(self):
+    @classmethod
+    def setup_class(cls):
 
-        self.app = AppForTesting()
+        cls.app = AppForTesting()
 
     def test_add_submanager(self):
 

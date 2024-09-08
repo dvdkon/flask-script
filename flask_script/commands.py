@@ -10,7 +10,7 @@ import inspect
 
 import argparse
 
-from flask import _request_ctx_stack
+from flask.globals import current_app
 
 from .cli import prompt, prompt_pass, prompt_bool, prompt_choices
 from ._compat import izip, text_type
@@ -115,7 +115,7 @@ class Command(object):
                 self.option_list = []
             return
 
-        args, varargs, keywords, defaults = inspect.getargspec(func)
+        args, varargs, keywords, defaults, kwonlyargs, kwonlydefaults, annotations = inspect.getfullargspec(func)
         if inspect.ismethod(func):
             args = args[1:]
 
@@ -258,7 +258,7 @@ class Shell(Command):
         self.use_ptpython = use_ptpython
 
         if make_context is None:
-            make_context = lambda: dict(app=_request_ctx_stack.top.app)
+            make_context = lambda: dict(app=current_app)
 
         self.make_context = make_context
 
