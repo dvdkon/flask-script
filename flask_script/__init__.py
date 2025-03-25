@@ -352,7 +352,7 @@ class Manager(object):
         app_parser = self.create_parser(prog)
         
         args = list(args or [])
-        app_namespace, remaining_args = app_parser.parse_known_args(args)
+        app_namespace, remaining_args = app_parser.parse_known_args(args, namespace=argparse.Namespace())
 
         # get the handle function and remove it from parsed options
         kwargs = app_namespace.__dict__
